@@ -2,39 +2,40 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,600,700&display=swap&subset=vietnamese');
 
 :root {
-   --primary: #fe2c55;
-   --text-color: #828282;
+  --primary: #fe2c55;
+  --white: #fff;
+  --text-color: #828282;
 
-   //Default layout
-   --default-layout-header-height: 60px;
-   --default-layout-width: 1450px;
+  //Default layout
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1450px;
 }
 
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-   font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-   font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
-   font-size: 1.6rem;
-   line-height: 1.5;
-   text-rendering: optimizeSpeed;
+  font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
 }
 
 button,
 input,
 [tabindex] {
-   outline: none;
-   border: none;
+  outline: none;
+  border: none;
 }
 
 a[href] {
-   color: var(--text-color);
-   text-decoration: none;
+  color: var(--text-color);
+  text-decoration: none;
 }
