@@ -28,6 +28,12 @@
   margin-left: 5px;
 }
 
+.icon {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+}
+
 //Button types
 
 .rounded {
@@ -68,8 +74,6 @@
     text-decoration: underline;
   }
 }
-
-//Disable
 
 //Button sizes
 .small {
