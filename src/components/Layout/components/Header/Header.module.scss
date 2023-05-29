@@ -14,12 +14,10 @@
 .innner {
   height: 100%;
   width: var(--default-layout-width);
+  padding: 0 var(--default-layout-horizontal-spacer);
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.logo {
 }
 
 .search,
@@ -98,11 +96,32 @@
   }
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+}
+
 .more-btn {
   margin-left: 24px;
   font-size: 2rem;
   padding: 4px 8px;
   background-color: transparent;
+  cursor: pointer;
 }
 
-//Menu
+.action-btn {
+  font-size: 2.2rem;
+  color: #161823;
+  background-color: transparent;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 12px;
+  cursor: pointer;
+}

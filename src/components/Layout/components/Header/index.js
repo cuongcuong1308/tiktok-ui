@@ -8,8 +8,17 @@ import {
   faMagnifyingGlass,
   faEllipsisVertical,
   faLanguage,
+  faCloudArrowUp,
+  faUser,
+  faCoins,
+  faGear,
+  faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
+
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
@@ -21,7 +30,27 @@ const cx = classnames.bind(styles);
 const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faLanguage} />,
-    title: 'Englist',
+    title: 'English',
+    children: {
+      title: 'Language',
+      data: [
+        {
+          type: 'language',
+          code: 'en',
+          title: 'English',
+        },
+        {
+          type: 'language',
+          code: 'vi',
+          title: 'Việt Nam',
+        },
+        {
+          type: 'language',
+          code: 'cn',
+          title: '中国',
+        },
+      ],
+    },
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -37,11 +66,48 @@ const MENU_ITEMS = [
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
 
+  const currentUser = true;
+
   useEffect(() => {
     setTimeout(() => {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  //Handle Logic
+  const handleMenuChange = (menuItem) => {
+    switch (menuItem.type) {
+      case 'language':
+        break;
+      default:
+        break;
+    }
+  };
+
+  const userMenu = [
+    {
+      icon: <FontAwesomeIcon icon={faUser} />,
+      title: 'View profile',
+      to: '/@hoaa',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: 'Get coins',
+      to: '/coins',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: 'Setting',
+      to: '/setting',
+    },
+    ...MENU_ITEMS,
+    {
+      icon: <FontAwesomeIcon icon={faSignOut} />,
+      title: 'Log out',
+      to: '/logout',
+      separate: true,
+    },
+  ];
 
   return (
     <header className={cx('wrapper')}>
@@ -51,7 +117,7 @@ function Header() {
         <img src={images.logo} alt="Tiktok" />
         {/* </div> */}
         {/* Search */}
-        <Tippy
+        <HeadlessTippy
           interactive
           visible={searchResult.length > 0}
           render={(attrs) => (
@@ -83,14 +149,36 @@ function Header() {
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
           </div>
-        </Tippy>
+        </HeadlessTippy>
+
         <div className={cx('actions')}>
-          <Button text>Upload</Button>
-          <Button primary>Log in</Button>
-          <Menu items={MENU_ITEMS}>
-            <button className={cx('more-btn')}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+          {currentUser ? (
+            <>
+              <Tippy trigger="click" content="Upload video" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <FontAwesomeIcon icon={faCloudArrowUp} />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <>
+              <Button text>Upload</Button>
+              <Button primary>Log in</Button>
+            </>
+          )}
+
+          <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+            {currentUser ? (
+              <img
+                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/8d393a8e0d3f04a911a84421ee857e1a~c5_100x100.jpeg?x-expires=1685498400&x-signature=HP%2BhN32ougW31Uim7Yx7LjQRRyI%3D"
+                className={cx('user-avatar')}
+                alt="Nguyen Van A"
+              />
+            ) : (
+              <button className={cx('more-btn')}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
           </Menu>
         </div>
       </div>

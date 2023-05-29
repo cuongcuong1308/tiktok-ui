@@ -9,6 +9,7 @@
   //Default layout
   --default-layout-header-height: 60px;
   --default-layout-width: 1450px;
+  --default-layout-horizontal-spacer: 24px;
 }
 
 * {
@@ -36,6 +37,26 @@ input,
 }
 
 a[href] {
-  color: var(--text-color);
+  color: black;
   text-decoration: none;
+}
+
+// Custom tippy tooltip
+body {
+  .tippy-box {
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    background-color: rgba(84, 84, 84, 0.92);
+    align-items: center;
+  }
+
+  .tippy-content {
+    padding: 8px;
+  }
+
+  .tippy-arrow {
+    color: rgba(84, 84, 84, 0.92);
+  }
 }
