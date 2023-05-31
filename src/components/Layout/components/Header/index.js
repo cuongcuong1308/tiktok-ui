@@ -8,7 +8,6 @@ import {
   faMagnifyingGlass,
   faEllipsisVertical,
   faLanguage,
-  faCloudArrowUp,
   faUser,
   faCoins,
   faGear,
@@ -24,6 +23,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import { UploadIcon } from '~/components/Icons/index';
+import Image from '~/components/Image';
 
 const cx = classnames.bind(styles);
 
@@ -156,7 +157,7 @@ function Header() {
             <>
               <Tippy trigger="click" content="Upload video" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudArrowUp} />
+                  <UploadIcon />
                 </button>
               </Tippy>
             </>
@@ -169,10 +170,12 @@ function Header() {
 
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/8d393a8e0d3f04a911a84421ee857e1a~c5_100x100.jpeg?x-expires=1685498400&x-signature=HP%2BhN32ougW31Uim7Yx7LjQRRyI%3D"
                 className={cx('user-avatar')}
-                alt="Nguyen Van A"
+                alt="Mỹ Mỹ"
+                // fallback="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/0c3008ae5239c2b7791f0e60766de412~c5_100x100.jpeg?x-expires=1685674800&x-signature=PSKgvxWaJd5kao%2BeH7Qf6IeZWJo%3D"
+                //khi ảnh lỗi sẽ hiện ảnh trong fallback
               />
             ) : (
               <button className={cx('more-btn')}>
